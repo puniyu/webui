@@ -33,7 +33,7 @@ jobs:
 
       - name: 运行 release-please-action
         id: release-please
-        uses: googleapis/release-please-action@c2a5a2bd6a758a0937f1ddb1e8950609867ed15c # v4
+        uses: googleapis/release-please-action@16a9c90856f42705d54a6fda1823352bdc62cf38 # v4
         with:
           token: ${{ steps.app-token.outputs.token }}
           config-file: .release-please-config.json
@@ -65,7 +65,7 @@ jobs:
           skip_unpack: true
 
       - name: 上传Release
-        uses: softprops/action-gh-release@6da8fa9354ddfdc4aeace5fc48d7f679b5214090 # v2
+        uses: softprops/action-gh-release@5be0e66d93ac7ed76da52eca8bb058f665c3a5fe # v2
         with:
           token: ${{ steps.app-token.outputs.token }}
           files: |
