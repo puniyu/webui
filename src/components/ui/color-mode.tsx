@@ -7,7 +7,7 @@ import type { ThemeProviderProps } from "next-themes";
 import * as React from "react";
 import { LuMoon, LuSun } from "react-icons/lu";
 import { Tooltip } from "@/components/ui/tooltip";
-import { motion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 
 export interface ColorModeProviderProps extends ThemeProviderProps { }
 
@@ -49,32 +49,23 @@ export function useColorModeValue<T>(light: T, dark: T) {
 	return colorMode === "dark" ? dark : light;
 }
 
-export function ColorModeIcon() {
-	const { colorMode } = useColorMode();
-	return colorMode === "dark" ? <LuMoon /> : <LuSun />;
-}
-
-interface ColorModeButtonProps extends Omit<IconButtonProps, "aria-label"> { }
+interface ColorModeButtonProps extends Omit<IconButtonProps, "aria-label"> {}
 
 export const ColorModeButton = React.forwardRef<
 	HTMLButtonElement,
 	ColorModeButtonProps
 >(function ColorModeButton(props, ref) {
-	const { toggleColorMode } = useColorMode();
-	const { colorMode } = useColorMode();
-	const tooltipLabel =
-		colorMode === "dark" ? "切换到浅色模式" : "切换到深色模式";
+	const { toggleColorMode, colorMode } = useColorMode();
+	const isDark = colorMode === "dark";
 
 	return (
-		<motion.div
-			whileHover={{
-				scale: 1.1
-			}}
-			whileTap={{ scale: 0.9 }}
-			transition={{ type: "spring", stiffness: 300 }}
-		>
-			<ClientOnly fallback={<Skeleton boxSize="9" />}>
-				<Tooltip content={tooltipLabel}>
+		<ClientOnly fallback={<Skeleton boxSize="9" />}>
+			<Tooltip content={isDark ? "切换到浅色模式" : "切换到深色模式"}>
+				<motion.div
+					whileHover={{ scale: 1.15 }}
+					whileTap={{ scale: 0.9 }}
+					transition={{ type: "spring", stiffness: 400, damping: 17 }}
+				>
 					<IconButton
 						onClick={toggleColorMode}
 						variant="ghost"
@@ -82,17 +73,42 @@ export const ColorModeButton = React.forwardRef<
 						size="md"
 						ref={ref}
 						{...props}
-						_hover={{
-							backgroundColor: { base: "gray.200", _dark: "gray.500" }
-						}}
-
-
+						className="relative overflow-hidden"
+						_hover={{ backgroundColor: { base: "gray.100", _dark: "gray.800" } }}
 					>
-						<ColorModeIcon />
+						<AnimatePresence mode="wait" initial={false}>
+							<motion.div
+								key={colorMode}
+								initial={{ y: -20, opacity: 0, rotate: -30 }}
+								animate={{ y: 0, opacity: 1, rotate: 0 }}
+								exit={{ y: 20, opacity: 0, rotate: 30 }}
+								transition={{
+									type: "spring",
+									stiffness: 300,
+									damping: 20,
+								}}
+							>
+								{isDark ? (
+									<motion.div
+										animate={{ rotate: [0, 10, -10, 0] }}
+										transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+									>
+										<LuMoon size={18} />
+									</motion.div>
+								) : (
+									<motion.div
+										animate={{ rotate: 360 }}
+										transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+									>
+										<LuSun size={18} />
+									</motion.div>
+								)}
+							</motion.div>
+						</AnimatePresence>
 					</IconButton>
-				</Tooltip>
-			</ClientOnly>
-		</motion.div>
+				</motion.div>
+			</Tooltip>
+		</ClientOnly>
 	);
 });
 

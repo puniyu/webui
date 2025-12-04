@@ -1,7 +1,7 @@
 import { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 import { BASE_ROUTE, DashBoard_ROUTE, LOGIN_ROUTE, NOT_FOUND_ROUTE } from "@/utils/router";
-import '@/styles/tailwind.css'
+
 
 const LoadingPage = lazy(() => import("@/components/loading"));
 const HomePage = lazy(() => import("@/pages/home"));
