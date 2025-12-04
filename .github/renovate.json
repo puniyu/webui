@@ -2,18 +2,5 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "github>puniyu/.github//.github/renovate"
-  ],
-  "packageRules": [
-    {
-      "groupName": "puniyu webui packages",
-      "matchManagers": ["npm"],
-      "rangeStrategy": "auto",
-      "schedule": [
-        "at any time"
-      ],
-      "labels": [
-        "dependencies"
-      ]
-    }
   ]
 }

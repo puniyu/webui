@@ -9,7 +9,7 @@ export default function NotFound() {
       {/* 文本区域 */}
       <Box className="rounded-lg flex flex-col relative pt-5! justify-center items-center w-9/10 h-9/10 md:w-md md:h-2/4 shadow-2xl bg-white dark:bg-black">
         <Box>
-          <Text className="text-3xl! text-purple-500">页面找不到了</Text>
+          <Text className="text-3xl! text-pink-300">页面找不到了</Text>
         </Box>
 
         <Box className="pt-5! w-9/10">
