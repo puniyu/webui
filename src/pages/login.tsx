@@ -11,14 +11,14 @@ import {
 } from "@chakra-ui/react";
 import { motion, AnimatePresence } from "motion/react";
 import { IoKeyOutline } from "react-icons/io5";
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import logo from "@/assets/logo.png";
 import { ColorModeButton } from "@/components/ui/color-mode";
 import SplitText from "@/components/SplitText";
 import { APP_NAME, DOCS_URL, REPO_URL } from "@/utils/app";
 import { FiBookOpen, FiGithub } from "react-icons/fi";
-import "@/styles/login.scss"
+import "@/styles/login.scss";
 
 // TODO:
 // - 登录功能实现
@@ -29,17 +29,13 @@ export default function Login() {
 
   const [yiyan, setYiyan] = useState<string | null>(null);
 
-  const fetchYiyan = useCallback(() => {
-    setYiyan(null);
-    axios
-      .get("https://v1.hitokoto.cn")
-      .then((res) => setYiyan(res.data.hitokoto))
-      .catch(() => setYiyan("加载一言失败"));
-  }, []);
-
   useEffect(() => {
-    fetchYiyan();
-  }, [fetchYiyan]);
+    if (yiyan !== null) return;
+    const delay = (ms: number) => new Promise((r) => setTimeout(r, ms));
+    Promise.all([axios.get("https://v1.hitokoto.cn"), delay(500)])
+      .then(([res]) => setYiyan(res.data.hitokoto))
+      .catch(() => setYiyan("加载一言失败"));
+  }, [yiyan]);
 
   return (
     <Box className="w-full min-h-screen h-dvh flex justify-center items-center bg-linear-to-br from-pink-50 via-white to-purple-50 dark:from-gray-900 dark:via-black dark:to-gray-900 overflow-hidden fixed inset-0">
@@ -66,7 +62,7 @@ export default function Login() {
         />
       ))}
 
-      <Box className="relative z-10">
+      <Box className="relative z-10 px-4 md:px-0">
         {/* 表单主体内容 */}
         <motion.div
           initial={{ opacity: 0, y: 30, scale: 0.95 }}
@@ -76,7 +72,7 @@ export default function Login() {
             ease: [0.25, 0.46, 0.45, 0.94],
           }}
         >
-          <Box className="p-5! md:p-7! w-[92%] md:w-md m-auto rounded-2xl md:rounded-3xl relative bg-white/80 dark:bg-black/80 backdrop-blur-xl border border-gray-200/50 dark:border-gray-700/50 shadow-2xl shadow-pink-500/10 dark:shadow-purple-500/10">
+          <Box className="p-5! md:p-7! w-80 md:w-md mx-auto rounded-2xl md:rounded-3xl relative bg-white/80 dark:bg-black/80 backdrop-blur-xl border border-gray-200/50 dark:border-gray-700/50 shadow-2xl shadow-pink-500/10 dark:shadow-purple-500/10">
             {/* 暗黑模式切换按钮 */}
             <motion.div
               className="absolute top-3 right-3 md:top-4 md:right-4"
@@ -133,7 +129,10 @@ export default function Login() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.35, duration: 0.5 }}
             >
-              <Heading as="h1" className="text-center mt-2 md:mt-3 text-2xl! md:text-3xl! font-bold! bg-clip-text text-transparent title">
+              <Heading
+                as="h1"
+                className="text-center mt-2 md:mt-3 text-2xl! md:text-3xl! font-bold! bg-clip-text text-transparent title"
+              >
                 PuniYu
               </Heading>
             </motion.div>
@@ -185,7 +184,7 @@ export default function Login() {
             {/* 一言 */}
             <motion.div
               className="mt-4 md:mt-6 min-h-[50px] md:min-h-[60px] flex items-center justify-center cursor-pointer"
-              onClick={fetchYiyan}
+              onClick={() => setYiyan(null)}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               title="点击刷新一言"
@@ -217,10 +216,10 @@ export default function Login() {
                     transition={{ duration: 0.3 }}
                   >
                     <SplitText
-                      text={yiyan}
+                      text={yiyan || ""}
                       delay={50}
                       splitType={"words"}
-                      className="text-gray-400 dark:text-gray-500 text-xs md:text-sm italic block! w-full px-2"
+                      className="text-gray-400 dark:text-gray-500 text-xs md:text-sm italic block! text-center"
                     />
                   </motion.div>
                 )}
@@ -257,7 +256,7 @@ export default function Login() {
                   <Flex
                     alignItems="center"
                     gap={2}
-                    className="text-gray-500 hover:text-purple-500 transition-colors duration-300"
+                    className="text-gray-500 hover:text-pink-500 transition-colors duration-300"
                   >
                     <Icon className="size-5!" />
                     <Text fontSize="sm">{label}</Text>

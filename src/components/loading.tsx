@@ -56,7 +56,7 @@ export default function Loading() {
         </motion.div>
 
         {/* 文字动画 */}
-        <Box className="flex mt-8">
+        <Box className="flex mt-3!">
           {"Loading".split("").map((char, i) => (
             <motion.span
               key={i}
@@ -94,7 +94,7 @@ export default function Loading() {
         </Box>
 
         {/* 进度条 */}
-        <Box className="mt-6 w-48 h-1.5 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+        <Box className="mt-2.5! w-48 h-1.5 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
           <motion.div
             className="h-full rounded-full"
             style={{
@@ -105,7 +105,7 @@ export default function Loading() {
           />
         </Box>
 
-        <Text className="mt-4 text-xs text-gray-400 dark:text-gray-500">
+        <Text className="mt-4! text-xs text-gray-400 dark:text-gray-500">
           正在加载资源...
         </Text>
       </Box>
