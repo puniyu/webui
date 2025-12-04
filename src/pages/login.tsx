@@ -16,7 +16,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import logo from "@/assets/logo.png";
 import { ColorModeButton } from "@/components/ui/color-mode";
-import { Typewriter } from "@/components/typewriter";
+import SplitText from "@/components/SplitText"
 import { APP_NAME, DOCS_URL, REPO_URL } from "@/utils/app";
 import { FiBookOpen, FiGithub } from "react-icons/fi";
 
@@ -27,7 +27,7 @@ export default function Login() {
 		document.title = `登录 - ${APP_NAME} WebUI`;
 	});
 
-	const [yiyan, setYiyan] = useState("");
+	const [yiyan, setYiyan] = useState("加载中...");
 
 	useEffect(() => {
 		axios
@@ -123,7 +123,7 @@ export default function Login() {
 						</motion.div>
 
 						{/* 一言 */}
-						<Typewriter text={yiyan || "加载中..."} typingSpeed={100} />
+						<SplitText text={yiyan} delay={100} />
 					</Box>
 				</motion.div>
 
