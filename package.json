@@ -9,7 +9,7 @@
   },
   "devDependencies": {
     "@chakra-ui/cli": "^3.27.1",
-    "@prettier/plugin-oxc": "^0.0.4",
+    "@prettier/plugin-oxc": "^0.1.0",
     "@tailwindcss/cli": "^4.1.14",
     "oxlint": "^1.23.0",
     "prettier": "^3.6.2",
@@ -44,7 +44,7 @@
     "tailwind-merge": "^3.4.0",
     "tailwindcss-animate": "^1.0.7"
   },
-  "packageManager": "pnpm@10.18.3",
+  "packageManager": "pnpm@10.24.0",
   "pnpm": {
     "onlyBuiltDependencies": [
       "@parcel/watcher",
