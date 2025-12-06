@@ -103,7 +103,7 @@ export default function Login() {
               >
                 <Box className="relative">
                   <motion.div
-                    className="absolute -inset-2 rounded-full blur-md avatar-glow"
+                    className="absolute -inset-2 rounded-full blur-md avatar"
                     animate={{
                       opacity: [0.5, 0.8, 0.5],
                     }}
