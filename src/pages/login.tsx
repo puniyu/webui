@@ -9,16 +9,16 @@ import {
   Link,
   Flex,
 } from "@chakra-ui/react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion } from "motion/react";
 import { IoKeyOutline } from "react-icons/io5";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import logo from "@/assets/logo.png";
+import logo from "/logo.webp";
 import { ColorModeButton } from "@/components/ui/color-mode";
 import SplitText from "@/components/SplitText";
 import { APP_NAME, DOCS_URL, REPO_URL } from "@/utils/app";
 import { FiBookOpen, FiGithub } from "react-icons/fi";
-import "@/styles/login.scss";
+import { camelCase } from "es-toolkit/string";
 
 // TODO:
 // - 登录功能实现
@@ -38,29 +38,36 @@ export default function Login() {
   }, [yiyan]);
 
   return (
-    <Box className="w-full min-h-screen h-dvh flex justify-center items-center bg-linear-to-br from-pink-50 via-white to-purple-50 dark:from-gray-900 dark:via-black dark:to-gray-900 overflow-hidden fixed inset-0">
+    <Box className="w-full min-h-dvh py-8 flex justify-center items-center bg-linear-to-br from-pink-50 via-white to-purple-50 dark:from-gray-900 dark:via-black dark:to-gray-900 relative">
       {/* 背景装饰 */}
-      {[
-        {
-          pos: "-top-10 -left-10 md:top-20 md:left-20",
-          size: "w-48 h-48 md:w-72 md:h-72",
-          color: "bg-pink-200/30 dark:bg-pink-500/10",
-          scale: [1, 1.2, 1],
-        },
-        {
-          pos: "-bottom-10 -right-10 md:bottom-20 md:right-20",
-          size: "w-56 h-56 md:w-96 md:h-96",
-          color: "bg-purple-200/30 dark:bg-purple-500/10",
-          scale: [1.2, 1, 1.2],
-        },
-      ].map((bg, i) => (
-        <motion.div
-          key={i}
-          className={`absolute ${bg.pos} ${bg.size} ${bg.color} rounded-full blur-3xl`}
-          animate={{ scale: bg.scale, opacity: [0.3, 0.5, 0.3] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        />
-      ))}
+      <Box className="absolute inset-0 overflow-hidden pointer-events-none">
+        {[
+          {
+            pos: "top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2",
+            size: "w-72 h-72 md:w-[500px] md:h-[500px]",
+            color: "bg-pink-300/50 dark:bg-pink-500/20",
+            scale: [1, 1.3, 1],
+          },
+          {
+            pos: "bottom-1/4 right-1/4 translate-x-1/2 translate-y-1/2",
+            size: "w-80 h-80 md:w-[600px] md:h-[600px]",
+            color: "bg-purple-300/40 dark:bg-purple-500/15",
+            scale: [1.2, 1, 1.2],
+          },
+        ].map((bg, i) => (
+          <motion.div
+            key={i}
+            className={`absolute ${bg.pos} ${bg.size} ${bg.color} rounded-full blur-[100px]`}
+            animate={{ scale: bg.scale, opacity: [0.5, 0.8, 0.5] }}
+            transition={{
+              duration: 6,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: i * 0.5,
+            }}
+          />
+        ))}
+      </Box>
 
       <Box className="relative z-10 px-4 md:px-0">
         {/* 表单主体内容 */}
@@ -72,7 +79,7 @@ export default function Login() {
             ease: [0.25, 0.46, 0.45, 0.94],
           }}
         >
-          <Box className="p-5! md:p-7! w-80 md:w-md mx-auto rounded-2xl md:rounded-3xl relative bg-white/80 dark:bg-black/80 backdrop-blur-xl border border-gray-200/50 dark:border-gray-700/50 shadow-2xl shadow-pink-500/10 dark:shadow-purple-500/10">
+          <Box className="p-5! md:p-7 w-80 md:w-md mx-auto rounded-2xl md:rounded-3xl relative bg-white/80 dark:bg-black/80 backdrop-blur-xl border border-gray-200/50 dark:border-gray-700/50 shadow-2xl shadow-pink-500/10 dark:shadow-purple-500/10">
             {/* 暗黑模式切换按钮 */}
             <motion.div
               className="absolute top-3 right-3 md:top-4 md:right-4"
@@ -103,7 +110,7 @@ export default function Login() {
               >
                 <Box className="relative">
                   <motion.div
-                    className="absolute -inset-2 rounded-full blur-md avatar"
+                    className="absolute -inset-2 rounded-full blur-md bg-linear-135 from-pink-300 via-pink-200 to-pink-100"
                     animate={{
                       opacity: [0.5, 0.8, 0.5],
                     }}
@@ -115,7 +122,7 @@ export default function Login() {
                   />
                   <Image
                     src={logo}
-                    className="size-20! md:size-28! relative z-10"
+                    className="size-20 md:size-28 relative z-10"
                     rounded="full"
                     border="3px solid"
                     borderColor="white"
@@ -131,9 +138,9 @@ export default function Login() {
             >
               <Heading
                 as="h1"
-                className="text-center mt-2 md:mt-3 text-2xl! md:text-3xl! font-bold! bg-clip-text text-transparent title"
+                className="text-center mt-2 md:mt-3 text-2xl md:text-4xl font-bold font-[DouyinSans] bg-clip-text text-transparent bg-linear-135 from-pink-400 via-pink-300 to-pink-200"
               >
-                PuniYu
+                {camelCase(APP_NAME)}
               </Heading>
             </motion.div>
 
@@ -142,7 +149,7 @@ export default function Login() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.45, duration: 0.5 }}
             >
-              <Text className="text-center mt-3 md:mt-4 text-sm md:text-base text-gray-500 dark:text-gray-400">
+              <Text className="text-center mt-3 md:mt-4 text-sm md:text-base text-gray-500 dark:text-gray-400 font-normal font-[AlibabaPuHuiTi">
                 欢迎回来, 请输入您的访问令牌以继续
               </Text>
             </motion.div>
@@ -153,17 +160,16 @@ export default function Login() {
               transition={{ delay: 0.55, duration: 0.5 }}
               className="mt-4 md:mt-6"
             >
-              <Text className="text-pink-500 dark:text-pink-300 font-medium mb-1.5 md:mb-2 text-sm md:text-base">
+              <Text className="text-pink-300 mb-1.5 md:mb-2 text-md md:text-base font-normal font-[AlibabaPuHuiTi]">
                 访问令牌
               </Text>
               <InputGroup
-                startElement={<IoKeyOutline className="text-gray-400" />}
+                startElement={<IoKeyOutline className="text-pink-300" />}
               >
                 <Input
-                  colorPalette="pink"
                   placeholder="输入您的令牌..."
                   type="password"
-                  className="rounded-xl! border-gray-200! dark:border-gray-700! focus:border-pink-400! transition-all"
+                  className="rounded-xl transition-all font-normal font-[AlibabaPuHuiTi] border-2 border-pink-200 bg-pink-50/50! focus:border-pink-300! focus:shadow-lg! focus:shadow-pink-200/50! focus:outline-none!"
                 />
               </InputGroup>
             </motion.div>
@@ -172,101 +178,94 @@ export default function Login() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.65, duration: 0.5 }}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="w-full mt-4! md:mt-5!"
+              className="w-full mt-5! md:mt-6!"
             >
-              <Button className="w-full py-5! md:py-6! rounded-xl! font-semibold! transition-all duration-300 text-white! text-sm md:text-base border-none! btn">
-                登录
+              <Button
+                className="group w-full py-3.5 md:py-4 rounded-xl font-medium text-sm md:text-base border-none text-white! shadow-md shadow-pink-200/50 hover:shadow-lg hover:shadow-pink-300/60 hover:brightness-105 active:scale-[0.98] transition-all duration-200"
+                background={
+                  "linear-gradient(135deg, #ffc4d6, #ffb6c1, #ffa8c5)"
+                }
+              >
+                <Text className="flex items-center justify-center gap-1.5">
+                  登录
+                  <motion.span
+                    className="inline-block"
+                    animate={{ x: [0, 4, 0] }}
+                    transition={{
+                      duration: 1.5,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                  >
+                    →
+                  </motion.span>
+                </Text>
               </Button>
             </motion.div>
 
             {/* 一言 */}
-            <motion.div
-              className="mt-4 md:mt-6 min-h-[50px] md:min-h-[60px] flex items-center justify-center cursor-pointer"
+            <Box
+              className="mt-4 min-h-[50px] flex items-center justify-center cursor-pointer"
               onClick={() => setYiyan(null)}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              title="点击刷新一言"
+              title="点击刷新"
             >
-              <AnimatePresence mode="wait">
-                {yiyan === null ? (
-                  <motion.div
-                    key="loading"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="flex items-center gap-2"
-                  >
-                    {[0, 0.2, 0.4].map((delay, i) => (
-                      <motion.span
-                        key={i}
-                        className={`w-2 h-2 rounded-full ${i % 2 === 0 ? "bg-pink-400" : "bg-purple-400"}`}
-                        animate={{ scale: [1, 1.5, 1] }}
-                        transition={{ duration: 0.6, repeat: Infinity, delay }}
-                      />
-                    ))}
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    key={yiyan}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <SplitText
-                      text={yiyan || ""}
-                      delay={50}
-                      splitType={"words"}
-                      className="text-gray-400 dark:text-gray-500 text-xs md:text-sm italic block! text-center"
+              {yiyan === null ? (
+                <Flex gap={2}>
+                  {[0, 0.2, 0.4].map((delay, i) => (
+                    <motion.span
+                      key={i}
+                      className={`w-2 h-2 rounded-full ${i % 2 === 0 ? "bg-pink-400" : "bg-purple-400"}`}
+                      animate={{ scale: [1, 1.5, 1] }}
+                      transition={{ duration: 0.6, repeat: Infinity, delay }}
                     />
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
+                  ))}
+                </Flex>
+              ) : (
+                <SplitText
+                  text={yiyan}
+                  delay={50}
+                  splitType="words"
+                  className="text-gray-400 dark:text-gray-500 text-sm md:text-base text-center font-[AlibabaPuHuiTi]"
+                />
+              )}
+            </Box>
           </Box>
         </motion.div>
 
         {/* 底部信息 */}
         <motion.div
-          className="pt-5! md:pt-8!"
+          className="pt-6 md:pt-8"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{
-            duration: 0.5,
-            delay: 0.8,
-          }}
+          transition={{ duration: 0.5, delay: 0.8 }}
         >
-          <Flex gap={8} justifyContent="center">
-            {[
-              { href: REPO_URL, icon: FiGithub, label: "GitHub" },
-              { href: DOCS_URL, icon: FiBookOpen, label: "Docs" },
-            ].map(({ href, icon: Icon, label }) => (
-              <motion.div
-                key={label}
-                whileHover={{ scale: 1.1, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Link
-                  href={href}
-                  target="_blank"
-                  _hover={{ textDecoration: "none" }}
-                >
-                  <Flex
-                    alignItems="center"
-                    gap={2}
-                    className="text-gray-500 hover:text-pink-500 transition-colors duration-300"
-                  >
-                    <Icon className="size-5!" />
-                    <Text fontSize="sm">{label}</Text>
-                  </Flex>
-                </Link>
-              </motion.div>
-            ))}
+          <Flex justifyContent="center" alignItems="center" gap={5}>
+            <Link
+              href={REPO_URL}
+              target="_blank"
+              _hover={{ textDecoration: "none" }}
+              className="text-pink-300 hover:text-pink-400 hover:-translate-y-1 hover:scale-105 transition-all duration-300"
+            >
+              <Flex alignItems="center" gap={2}>
+                <FiGithub className="size-6" />
+                <Text className="text-lg font-[AlibabaPuHuiTi]">GitHub</Text>
+              </Flex>
+            </Link>
+            <Box className="w-px h-5 bg-pink-200" />
+            <Link
+              href={DOCS_URL}
+              target="_blank"
+              _hover={{ textDecoration: "none" }}
+              className="text-pink-300 hover:text-pink-400 hover:-translate-y-1 hover:scale-105 transition-all duration-300"
+            >
+              <Flex alignItems="center" gap={2}>
+                <FiBookOpen className="size-6" />
+                <Text className="text-lg font-[AlibabaPuHuiTi]">Docs</Text>
+              </Flex>
+            </Link>
           </Flex>
 
-          <Text className="pt-3! md:pt-4! text-center text-gray-400 dark:text-gray-600 text-xs">
+          <Text className="pt-4 text-center text-pink-200 text-base font-[AlibabaPuHuiTi]">
             Made with ❤️ by {APP_NAME} · © {new Date().getFullYear()}
           </Text>
         </motion.div>
