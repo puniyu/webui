@@ -10,7 +10,7 @@ export default function () {
 
     useEffect(() => {
         document.title = `Dashboard - ${APP_NAME} WebUI`
-    })
+    },[])
 
     return (
         <Box>

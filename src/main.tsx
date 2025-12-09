@@ -4,6 +4,7 @@ import App from '@/app'
 import { BrowserRouter } from "react-router-dom"
 import '@/styles/tailwind.css'
 import "@/styles/font.scss"
+import "@/styles/global.scss"
 
 createRoot(document.getElementById('root')!).render(
 
