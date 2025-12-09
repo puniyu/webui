@@ -2,15 +2,12 @@ import { APP_NAME } from "@/utils/app";
 import { Box, Group, Card, Button } from "@chakra-ui/react"
 import { useEffect } from 'react';
 
-/**
- * TODO: 后端获取数据
- * 
- */
+// TODO: 后端获取数据
 export default function () {
 
     useEffect(() => {
         document.title = `Dashboard - ${APP_NAME} WebUI`
-    })
+    },[])
 
     return (
         <Box>

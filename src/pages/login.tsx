@@ -10,7 +10,7 @@ import {
   Flex,
 } from "@chakra-ui/react";
 import { motion } from "motion/react";
-import { IoKeyOutline } from "react-icons/io5";
+import { IoKeyOutline, IoEyeOutline, IoEyeOffOutline } from "react-icons/io5";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import logo from "/logo.webp";
@@ -20,14 +20,14 @@ import { APP_NAME, DOCS_URL, REPO_URL } from "@/utils/app";
 import { FiBookOpen, FiGithub } from "react-icons/fi";
 import { camelCase } from "es-toolkit/string";
 
-// TODO:
-// - 登录功能实现
+// TODO: 登录功能实现
 export default function Login() {
   useEffect(() => {
     document.title = `登录 - ${APP_NAME} WebUI`;
-  });
+  },[]);
 
   const [yiyan, setYiyan] = useState<string | null>(null);
+  const [showPassword, setShowPassword] = useState(false);
 
   useEffect(() => {
     if (yiyan !== null) return;
@@ -43,27 +43,39 @@ export default function Login() {
       <Box className="absolute inset-0 overflow-hidden pointer-events-none">
         {[
           {
-            pos: "top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2",
-            size: "w-72 h-72 md:w-[500px] md:h-[500px]",
-            color: "bg-pink-300/50 dark:bg-pink-500/20",
-            scale: [1, 1.3, 1],
+            pos: "top-[20%] left-[15%]",
+            size: "w-64 h-64 md:w-[450px] md:h-[450px]",
+            color: "bg-pink-200 dark:bg-pink-400/15",
+            scale: [1, 1.2, 1],
           },
           {
-            pos: "bottom-1/4 right-1/4 translate-x-1/2 translate-y-1/2",
-            size: "w-80 h-80 md:w-[600px] md:h-[600px]",
-            color: "bg-purple-300/40 dark:bg-purple-500/15",
-            scale: [1.2, 1, 1.2],
+            pos: "top-[10%] right-[20%]",
+            size: "w-48 h-48 md:w-[350px] md:h-[350px]",
+            color: "bg-rose-200 dark:bg-rose-400/15",
+            scale: [1.1, 1, 1.1],
+          },
+          {
+            pos: "bottom-[15%] left-[25%]",
+            size: "w-56 h-56 md:w-[400px] md:h-[400px]",
+            color: "bg-pink-100 dark:bg-pink-300/10",
+            scale: [1, 1.15, 1],
+          },
+          {
+            pos: "bottom-[20%] right-[10%]",
+            size: "w-72 h-72 md:w-[500px] md:h-[500px]",
+            color: "bg-pink-300/80 dark:bg-pink-500/20",
+            scale: [1.15, 1, 1.15],
           },
         ].map((bg, i) => (
           <motion.div
             key={i}
-            className={`absolute ${bg.pos} ${bg.size} ${bg.color} rounded-full blur-[100px]`}
-            animate={{ scale: bg.scale, opacity: [0.5, 0.8, 0.5] }}
+            className={`absolute ${bg.pos} ${bg.size} ${bg.color} rounded-full blur-[120px]`}
+            animate={{ scale: bg.scale, opacity: [0.4, 0.7, 0.4] }}
             transition={{
-              duration: 6,
+              duration: 8,
               repeat: Infinity,
               ease: "easeInOut",
-              delay: i * 0.5,
+              delay: i * 0.8,
             }}
           />
         ))}
@@ -79,7 +91,7 @@ export default function Login() {
             ease: [0.25, 0.46, 0.45, 0.94],
           }}
         >
-          <Box className="p-5! md:p-7 w-80 md:w-md mx-auto rounded-2xl md:rounded-3xl relative bg-white/80 dark:bg-black/80 backdrop-blur-xl border border-gray-200/50 dark:border-gray-700/50 shadow-2xl shadow-pink-500/10 dark:shadow-purple-500/10">
+          <Box className="p-5 md:p-7 w-80 md:w-md mx-auto rounded-2xl md:rounded-3xl relative bg-white/30 dark:bg-black/30 backdrop-blur-2xl backdrop-saturate-150 border border-white/50 dark:border-white/10 shadow-2xl shadow-pink-500/10 dark:shadow-purple-500/10">
             {/* 暗黑模式切换按钮 */}
             <motion.div
               className="absolute top-3 right-3 md:top-4 md:right-4"
@@ -165,11 +177,20 @@ export default function Login() {
               </Text>
               <InputGroup
                 startElement={<IoKeyOutline className="text-pink-300" />}
+                endElement={
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="text-pink-200 hover:text-pink-400 transition-colors cursor-pointer"
+                  >
+                    {showPassword ? <IoEyeOffOutline /> : <IoEyeOutline />}
+                  </button>
+                }
               >
                 <Input
                   placeholder="输入您的令牌..."
-                  type="password"
-                  className="rounded-xl transition-all font-normal font-[AlibabaPuHuiTi] border-2 border-pink-200 bg-pink-50/50! focus:border-pink-300! focus:shadow-lg! focus:shadow-pink-200/50! focus:outline-none!"
+                  type={showPassword ? "text" : "password"}
+                  className="rounded-xl transition-all font-normal font-[AlibabaPuHuiTi] border-2 border-pink-200 bg-pink-50/50! focus:border-pink-300! focus:shadow-lg focus:shadow-pink-200/50! focus:outline-none"
                 />
               </InputGroup>
             </motion.div>
@@ -214,7 +235,7 @@ export default function Login() {
                   {[0, 0.2, 0.4].map((delay, i) => (
                     <motion.span
                       key={i}
-                      className={`w-2 h-2 rounded-full ${i % 2 === 0 ? "bg-pink-400" : "bg-purple-400"}`}
+                      className={`w-2 h-2 rounded-full ${["bg-pink-200", "bg-pink-300", "bg-rose-200"][i]}`}
                       animate={{ scale: [1, 1.5, 1] }}
                       transition={{ duration: 0.6, repeat: Infinity, delay }}
                     />
