@@ -10,7 +10,7 @@ import {
   Flex,
 } from "@chakra-ui/react";
 import { motion } from "motion/react";
-import { IoKeyOutline } from "react-icons/io5";
+import { IoKeyOutline, IoEyeOutline, IoEyeOffOutline } from "react-icons/io5";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import logo from "/logo.webp";
@@ -20,14 +20,14 @@ import { APP_NAME, DOCS_URL, REPO_URL } from "@/utils/app";
 import { FiBookOpen, FiGithub } from "react-icons/fi";
 import { camelCase } from "es-toolkit/string";
 
-// TODO:
-// - 登录功能实现
+// TODO: 登录功能实现
 export default function Login() {
   useEffect(() => {
     document.title = `登录 - ${APP_NAME} WebUI`;
-  });
+  },[]);
 
   const [yiyan, setYiyan] = useState<string | null>(null);
+  const [showPassword, setShowPassword] = useState(false);
 
   useEffect(() => {
     if (yiyan !== null) return;
@@ -45,13 +45,13 @@ export default function Login() {
           {
             pos: "top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2",
             size: "w-72 h-72 md:w-[500px] md:h-[500px]",
-            color: "bg-pink-300/50 dark:bg-pink-500/20",
+            color: "bg-pink-300 dark:bg-pink-500/20",
             scale: [1, 1.3, 1],
           },
           {
             pos: "bottom-1/4 right-1/4 translate-x-1/2 translate-y-1/2",
             size: "w-80 h-80 md:w-[600px] md:h-[600px]",
-            color: "bg-purple-300/40 dark:bg-purple-500/15",
+            color: "bg-purple-300 dark:bg-purple-500/15",
             scale: [1.2, 1, 1.2],
           },
         ].map((bg, i) => (
@@ -79,7 +79,7 @@ export default function Login() {
             ease: [0.25, 0.46, 0.45, 0.94],
           }}
         >
-          <Box className="p-5! md:p-7 w-80 md:w-md mx-auto rounded-2xl md:rounded-3xl relative bg-white/80 dark:bg-black/80 backdrop-blur-xl border border-gray-200/50 dark:border-gray-700/50 shadow-2xl shadow-pink-500/10 dark:shadow-purple-500/10">
+          <Box className="p-5! md:p-7 w-80 md:w-md mx-auto rounded-2xl md:rounded-3xl relative bg-white-100 dark:bg-black/80 backdrop-blur-xl border border-gray-200 dark:border-gray-700/50 shadow-2xl shadow-pink-500/10 dark:shadow-purple-500/10">
             {/* 暗黑模式切换按钮 */}
             <motion.div
               className="absolute top-3 right-3 md:top-4 md:right-4"
@@ -165,11 +165,20 @@ export default function Login() {
               </Text>
               <InputGroup
                 startElement={<IoKeyOutline className="text-pink-300" />}
+                endElement={
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="text-pink-200 hover:text-pink-400 transition-colors cursor-pointer"
+                  >
+                    {showPassword ? <IoEyeOffOutline /> : <IoEyeOutline />}
+                  </button>
+                }
               >
                 <Input
                   placeholder="输入您的令牌..."
-                  type="password"
-                  className="rounded-xl transition-all font-normal font-[AlibabaPuHuiTi] border-2 border-pink-200 bg-pink-50/50! focus:border-pink-300! focus:shadow-lg! focus:shadow-pink-200/50! focus:outline-none!"
+                  type={showPassword ? "text" : "password"}
+                  className="rounded-xl transition-all font-normal font-[AlibabaPuHuiTi] border-2 border-pink-200 bg-pink-50/50! focus:border-pink-300! focus:shadow-lg focus:shadow-pink-200/50! focus:outline-none"
                 />
               </InputGroup>
             </motion.div>
