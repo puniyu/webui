@@ -43,33 +43,33 @@ export default function Login() {
       <Box className="absolute inset-0 overflow-hidden pointer-events-none">
         {[
           {
-            pos: "top-[20%] left-[15%]",
-            size: "w-64 h-64 md:w-[450px] md:h-[450px]",
+            pos: "-top-[10%] -left-[20%] md:top-[10%] md:left-[5%]",
+            size: "w-48 h-48 md:w-[450px] md:h-[450px]",
             color: "bg-pink-200 dark:bg-pink-400/15",
             scale: [1, 1.2, 1],
           },
           {
-            pos: "top-[10%] right-[20%]",
-            size: "w-48 h-48 md:w-[350px] md:h-[350px]",
+            pos: "-top-[5%] -right-[15%] md:top-[5%] md:right-[10%]",
+            size: "w-40 h-40 md:w-[350px] md:h-[350px]",
             color: "bg-rose-200 dark:bg-rose-400/15",
             scale: [1.1, 1, 1.1],
           },
           {
-            pos: "bottom-[15%] left-[25%]",
-            size: "w-56 h-56 md:w-[400px] md:h-[400px]",
+            pos: "-bottom-[10%] -left-[10%] md:bottom-[10%] md:left-[15%]",
+            size: "w-44 h-44 md:w-[400px] md:h-[400px]",
             color: "bg-pink-100 dark:bg-pink-300/10",
             scale: [1, 1.15, 1],
           },
           {
-            pos: "bottom-[20%] right-[10%]",
-            size: "w-72 h-72 md:w-[500px] md:h-[500px]",
+            pos: "-bottom-[15%] -right-[20%] md:bottom-[10%] md:right-[5%]",
+            size: "w-52 h-52 md:w-[500px] md:h-[500px]",
             color: "bg-pink-300/80 dark:bg-pink-500/20",
             scale: [1.15, 1, 1.15],
           },
         ].map((bg, i) => (
           <motion.div
             key={i}
-            className={`absolute ${bg.pos} ${bg.size} ${bg.color} rounded-full blur-[120px]`}
+            className={`absolute ${bg.pos} ${bg.size} ${bg.color} rounded-full blur-[80px] md:blur-[120px]`}
             animate={{ scale: bg.scale, opacity: [0.4, 0.7, 0.4] }}
             transition={{
               duration: 8,
@@ -91,7 +91,7 @@ export default function Login() {
             ease: [0.25, 0.46, 0.45, 0.94],
           }}
         >
-          <Box className="p-5 md:p-7 w-80 md:w-md mx-auto rounded-2xl md:rounded-3xl relative bg-white/30 dark:bg-black/30 backdrop-blur-2xl backdrop-saturate-150 border border-white/50 dark:border-white/10 shadow-2xl shadow-pink-500/10 dark:shadow-purple-500/10">
+          <Box className="p-5 md:p-7 w-80 md:w-md mx-auto rounded-2xl md:rounded-3xl relative bg-white/30 dark:bg-black/30 backdrop-blur-2xl backdrop-saturate-150 border border-white/50 dark:border-white/10 shadow-2xl shadow-pink-400/40 dark:shadow-pink-500/20">
             {/* 暗黑模式切换按钮 */}
             <motion.div
               className="absolute top-3 right-3 md:top-4 md:right-4"
