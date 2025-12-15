@@ -4,7 +4,7 @@ import { Box, Text, Image } from "@chakra-ui/react";
 import { useDocumentTitle } from "@uidotdev/usehooks";
 
 export default function NotFound() {
-      useDocumentTitle(`${APP_NAME} WebUI`)
+  useDocumentTitle(`${APP_NAME} WebUI`);
   const imageUrl = "https://t.alcy.cc/moez";
 
   return (

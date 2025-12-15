@@ -1,6 +1,6 @@
 import { Box, Image, Text } from "@chakra-ui/react";
 import { motion } from "motion/react";
-import logo from "/logo.webp";
+import logo from "@/assets/logo.webp";
 
 export default function Loading() {
   return (

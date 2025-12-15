@@ -43,7 +43,7 @@ export default defineConfig({
           }
 
           /** react */
-          if (id.includes("react")) {
+          if (id.includes("react") || id.includes("@tanstack/react-query")) {
             return "vendor-react";
           }
           /** ui工具库 */
