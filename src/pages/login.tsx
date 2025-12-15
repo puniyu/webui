@@ -38,7 +38,8 @@ export default function Login() {
   }, [yiyan]);
 
   return (
-    <Box className="w-full min-h-dvh py-8 flex justify-center items-center bg-linear-to-br from-pink-100 via-white to-pink-100 dark:from-gray-900 dark:via-black dark:to-gray-900 relative">
+    <Box className="w-full min-h-dvh py-8 flex justify-center items-center bg-linear-to-br from-pink-100 via-pink-100 to-purple-100 dark:from-gray-900 dark:via-black dark:to-gray-900 relative">
+
       <Box className="px-4 md:px-0">
         {/* 表单主体内容 */}
         <motion.div
@@ -49,7 +50,7 @@ export default function Login() {
             ease: [0.25, 0.46, 0.45, 0.94],
           }}
         >
-          <Box className="p-6 md:p-8 w-80 md:w-md mx-auto rounded-2xl md:rounded-3xl relative bg-white dark:bg-black/30 border border-pink-200/60 dark:border-white/10 shadow-lg shadow-pink-100 dark:shadow-pink-500/20 dark:backdrop-blur-2xl dark:backdrop-saturate-150">
+          <Box className="p-6 md:p-8 w-80 md:w-md mx-auto rounded-2xl md:rounded-3xl relative bg-white dark:bg-black/30 border border-pink-200/60 dark:border-white/10 shadow-lg shadow-pink-100 dark:shadow-pink-200/20 dark:backdrop-blur-2xl dark:backdrop-saturate-150">
             {/* 暗黑模式切换按钮 */}
             <motion.div
               className="absolute top-3 right-3 md:top-4 md:right-4"
@@ -118,7 +119,7 @@ export default function Login() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.45, duration: 0.5 }}
             >
-              <Text className="text-center mt-2 md:mt-3 text-sm md:text-base text-pink-300 dark:text-pink-400/60 font-normal font-[AlibabaPuHuiTi]">
+              <Text className="text-center mt-2 md:mt-3 text-sm md:text-base text-pink-300 dark:text-pink-400 font-normal font-[AlibabaPuHuiTi]">
                 欢迎回来, 请输入您的访问令牌以继续
               </Text>
             </motion.div>
@@ -201,7 +202,7 @@ export default function Login() {
                   text={yiyan}
                   delay={50}
                   splitType="words"
-                  className="text-pink-300 dark:text-pink-400/70 text-sm text-center font-[AlibabaPuHuiTi]"
+                  className="text-pink-300 dark:text-pink-400 text-sm text-center font-[AlibabaPuHuiTi]"
                 />
               )}
             </Box>
@@ -220,7 +221,7 @@ export default function Login() {
               href={REPO_URL}
               target="_blank"
               _hover={{ textDecoration: "none" }}
-              className="text-pink-300 hover:text-pink-400 dark:text-pink-400/60 dark:hover:text-pink-300 hover:-translate-y-1 hover:scale-105 transition-all duration-300"
+              className="text-pink-300 hover:text-pink-400 dark:text-pink-400 dark:hover:text-pink-300 hover:-translate-y-1 hover:scale-105 transition-all duration-300"
             >
               <Flex alignItems="center" gap={1.5}>
                 <FiGithub className="size-5" />
@@ -232,7 +233,7 @@ export default function Login() {
               href={DOCS_URL}
               target="_blank"
               _hover={{ textDecoration: "none" }}
-              className="text-pink-300 hover:text-pink-400 dark:text-pink-400/60 dark:hover:text-pink-300 hover:-translate-y-1 hover:scale-105 transition-all duration-300"
+              className="text-pink-300 hover:text-pink-400 dark:text-pink-400 dark:hover:text-pink-300 hover:-translate-y-1 hover:scale-105 transition-all duration-300"
             >
               <Flex alignItems="center" gap={1.5}>
                 <FiBookOpen className="size-5" />
@@ -241,7 +242,7 @@ export default function Login() {
             </Link>
           </Flex>
 
-          <Text className="pt-3 text-center text-pink-200 dark:text-pink-600/50 text-sm font-[AlibabaPuHuiTi]">
+          <Text className="pt-3 text-center text-pink-200 dark:text-pink-400 text-sm font-[AlibabaPuHuiTi]">
             Made with ❤️ by {APP_NAME} · © {new Date().getFullYear()}
           </Text>
         </motion.div>
