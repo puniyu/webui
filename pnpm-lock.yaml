@@ -29,6 +29,9 @@ importers:
       '@types/react-dom':
         specifier: ^19.2.2
         version: 19.2.3(@types/react@19.2.7)
+      '@uidotdev/usehooks':
+        specifier: ^2.4.1
+        version: 2.4.1(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       '@vitejs/plugin-react':
         specifier: ^5.0.4
         version: 5.1.2(rolldown-vite@7.2.10(@types/node@24.10.3)(esbuild@0.25.12)(jiti@2.6.1)(sass@1.95.1)(tsx@4.21.0))
@@ -1209,6 +1212,13 @@ packages:
 
   '@types/react@19.2.7':
     resolution: {integrity: sha512-MWtvHrGZLFttgeEj28VXHxpmwYbor/ATPYbBfSFZEIRK0ecCFLl2Qo55z52Hss+UV9CRN7trSeq1zbgx7YDWWg==}
+
+  '@uidotdev/usehooks@2.4.1':
+    resolution: {integrity: sha512-1I+RwWyS+kdv3Mv0Vmc+p0dPYH0DTRAo04HLyXReYBL9AeseDWUJyi4THuksBJcu9F0Pih69Ak150VDnqbVnXg==}
+    engines: {node: '>=16'}
+    peerDependencies:
+      react: '>=18.0.0'
+      react-dom: '>=18.0.0'
 
   '@visulima/boxen@2.0.10':
     resolution: {integrity: sha512-ljghUzl32eUxIixARh8HBBJ2SXz2mJoD7C7Tl9/AEerN/PNihq1PMkzX/QPvMYOXpKrwoPt8ISNOc2EUacX5Wg==}
@@ -3394,6 +3404,11 @@ snapshots:
   '@types/react@19.2.7':
     dependencies:
       csstype: 3.2.3
+
+  '@uidotdev/usehooks@2.4.1(react-dom@19.2.1(react@19.2.1))(react@19.2.1)':
+    dependencies:
+      react: 19.2.1
+      react-dom: 19.2.1(react@19.2.1)
 
   '@visulima/boxen@2.0.10': {}
 

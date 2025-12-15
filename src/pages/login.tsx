@@ -19,12 +19,11 @@ import SplitText from "@/components/SplitText";
 import { APP_NAME, DOCS_URL, REPO_URL } from "@/utils/app";
 import { FiBookOpen, FiGithub } from "react-icons/fi";
 import { camelCase } from "es-toolkit/string";
+import { useDocumentTitle } from "@uidotdev/usehooks";
 
 // TODO: 登录功能实现
 export default function Login() {
-  useEffect(() => {
-    document.title = `登录 - ${APP_NAME} WebUI`;
-  },[]);
+  useDocumentTitle(`登录 - ${APP_NAME} WebUI`)
 
   const [yiyan, setYiyan] = useState<string | null>(null);
   const [showPassword, setShowPassword] = useState(false);

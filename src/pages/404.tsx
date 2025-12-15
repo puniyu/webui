@@ -1,7 +1,10 @@
 import { ColorModeButton } from "@/components/ui/color-mode";
+import { APP_NAME } from "@/utils/app";
 import { Box, Text, Image } from "@chakra-ui/react";
+import { useDocumentTitle } from "@uidotdev/usehooks";
 
 export default function NotFound() {
+      useDocumentTitle(`${APP_NAME} WebUI`)
   const imageUrl = "https://t.alcy.cc/moez";
 
   return (

@@ -1,13 +1,11 @@
 import { APP_NAME } from "@/utils/app";
 import { Box, Group, Card, Button } from "@chakra-ui/react"
-import { useEffect } from 'react';
+import { useDocumentTitle } from "@uidotdev/usehooks";
 
 // TODO: 后端获取数据
 export default function () {
 
-    useEffect(() => {
-        document.title = `Dashboard - ${APP_NAME} WebUI`
-    },[])
+    useDocumentTitle(`Dashboard - ${APP_NAME} WebUI`)
 
     return (
         <Box>
