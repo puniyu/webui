@@ -18,18 +18,18 @@
     "tailwindcss": "^4.1.14",
     "vite": "npm:rolldown-vite@latest",
     "vite-plugin-compression": "^0.5.1",
-    "vite-tsconfig-paths": "^5.1.4"
+    "vite-tsconfig-paths": "^5.1.4",
+    "@types/node": "^24.8.0",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "@vitejs/plugin-react": "^5.0.4"
   },
   "dependencies": {
     "@chakra-ui/react": "^3.27.1",
     "@emotion/react": "^11.14.0",
     "@gsap/react": "^2.1.2",
     "@tailwindcss/vite": "^4.1.14",
-    "@types/node": "^24.8.0",
-    "@types/react": "^19.2.2",
-    "@types/react-dom": "^19.2.2",
     "@uidotdev/usehooks": "^2.4.1",
-    "@vitejs/plugin-react": "^5.0.4",
     "axios": "^1.12.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

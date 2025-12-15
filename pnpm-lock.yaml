@@ -20,21 +20,9 @@ importers:
       '@tailwindcss/vite':
         specifier: ^4.1.14
         version: 4.1.17(rolldown-vite@7.2.10(@types/node@24.10.3)(esbuild@0.25.12)(jiti@2.6.1)(sass@1.95.1)(tsx@4.21.0))
-      '@types/node':
-        specifier: ^24.8.0
-        version: 24.10.3
-      '@types/react':
-        specifier: ^19.2.2
-        version: 19.2.7
-      '@types/react-dom':
-        specifier: ^19.2.2
-        version: 19.2.3(@types/react@19.2.7)
       '@uidotdev/usehooks':
         specifier: ^2.4.1
         version: 2.4.1(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
-      '@vitejs/plugin-react':
-        specifier: ^5.0.4
-        version: 5.1.2(rolldown-vite@7.2.10(@types/node@24.10.3)(esbuild@0.25.12)(jiti@2.6.1)(sass@1.95.1)(tsx@4.21.0))
       axios:
         specifier: ^1.12.2
         version: 1.13.2
@@ -90,6 +78,18 @@ importers:
       '@tailwindcss/cli':
         specifier: ^4.1.14
         version: 4.1.17
+      '@types/node':
+        specifier: ^24.8.0
+        version: 24.10.3
+      '@types/react':
+        specifier: ^19.2.2
+        version: 19.2.7
+      '@types/react-dom':
+        specifier: ^19.2.2
+        version: 19.2.3(@types/react@19.2.7)
+      '@vitejs/plugin-react':
+        specifier: ^5.0.4
+        version: 5.1.2(rolldown-vite@7.2.10(@types/node@24.10.3)(esbuild@0.25.12)(jiti@2.6.1)(sass@1.95.1)(tsx@4.21.0))
       oxlint:
         specifier: ^1.23.0
         version: 1.32.0
