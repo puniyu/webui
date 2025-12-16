@@ -30,50 +30,68 @@ export default defineConfig({
     outDir: path.join(filePath, "dist"),
     cssCodeSplit: true,
     chunkSizeWarningLimit: 1000,
-    rollupOptions: {
+    rolldownOptions: {
       output: {
-        manualChunks: (id) => {
-          /** ui组件 */
-          if (
-            id.includes("@chakra-ui/") ||
-            id.includes("next-themes") ||
-            id.includes("motion")
-          ) {
-            return "vendor-ui";
-          }
-
-          /** react */
-          if (id.includes("react") || id.includes("@tanstack/react-query")) {
-            return "vendor-react";
-          }
-          /** ui工具库 */
-          if (
-            id.includes("tailwind") ||
-            id.includes("tw-animate-css") ||
-            id.includes("tailwindcss-animate") ||
-            id.includes("lucide-react") ||
-            id.includes("class-variance-authority") ||
-            id.includes("gsap") ||
-            id.includes("@gsap/") ||
-            id.includes("@emotion/react")
-          ) {
-            return "vendor-ui-utils";
-          }
-
-          /** 组件 */
-          if (id.includes("/components/")) {
-            return "components";
-          }
-
-          /** 页面 */
-          if (id.includes("/pages/")) {
-            const segments = id.split("/");
-            const pageName =
-              segments[segments.findIndex((s) => s === "pages") + 1];
-            if (pageName) {
-              return `page-${pageName}`;
-            }
-          }
+        advancedChunks: {
+          groups: [
+            {
+              name: "vendor-react",
+              test: (moduleId) => {
+                return (
+                  moduleId.includes("react") ||
+                  moduleId.includes("@tanstack/react-query") ||
+                  moduleId.includes("@uidotdev/usehooks")
+                );
+              },
+              priority: 1,
+            },
+            {
+              name: "vendor-ui",
+              test: (moduleId) => {
+                return (
+                  moduleId.includes("@chakra-ui/") ||
+                  moduleId.includes("next-themes") ||
+                  moduleId.includes("motion")
+                );
+              },
+              priority: 2,
+            },
+            {
+              name: "ui-utils",
+              test: (moduleId) => {
+                return (
+                  moduleId.includes("tailwind") ||
+                  moduleId.includes("tw-animate-css") ||
+                  moduleId.includes("tailwindcss-animate") ||
+                  moduleId.includes("lucide-react") ||
+                  moduleId.includes("class-variance-authority") ||
+                  moduleId.includes("gsap") ||
+                  moduleId.includes("@gsap/") ||
+                  moduleId.includes("@emotion/react")
+                );
+              },
+              priority: 3,
+            },
+            {
+              name: "components",
+              test: (moduleId) => {
+                return moduleId.includes("/components/");
+              },
+              priority: 4,
+            },
+            {
+              name: (moduleId) => {
+                const pageMatch = moduleId.match(/\/pages\/([^/.]+)/);
+                if (pageMatch) {
+                  return `page/${pageMatch[1]}`;
+                }
+              },
+              test: (moduleId) => {
+                return moduleId.includes("/pages/");
+              },
+              priority: 5,
+            },
+          ],
         },
         chunkFileNames: "assets/js/[name]-[hash].js",
         entryFileNames: "assets/js/entry-[hash].js",
