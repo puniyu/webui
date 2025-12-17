@@ -11,7 +11,7 @@
     "@chakra-ui/cli": "^3.27.1",
     "@prettier/plugin-oxc": "^0.1.0",
     "@tailwindcss/cli": "^4.1.14",
-    "@types/node": "^24.8.0",
+    "@types/node": "^25.0.0",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2",
     "@vitejs/plugin-react": "^5.0.4",
@@ -22,7 +22,7 @@
     "tailwindcss": "^4.1.14",
     "vite": "npm:rolldown-vite@latest",
     "vite-plugin-compression": "^0.5.1",
-    "vite-tsconfig-paths": "^5.1.4"
+    "vite-tsconfig-paths": "^6.0.0"
   },
   "dependencies": {
     "@chakra-ui/react": "^3.27.1",
