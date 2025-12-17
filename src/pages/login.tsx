@@ -23,7 +23,7 @@ import { useDocumentTitle } from "@uidotdev/usehooks";
 import { useQuery } from "@tanstack/react-query";
 
 // TODO: 登录功能实现
-export default function Login() {
+const Login = () => {
   useDocumentTitle(`Login - ${APP_NAME} WebUI`);
   const [showPassword, setShowPassword] = useState(false);
 
@@ -157,7 +157,7 @@ export default function Login() {
                 <Input
                   placeholder="输入您的令牌..."
                   type={showPassword ? "text" : "password"}
-                  className="rounded-xl transition-all font-normal font-[AlibabaPuHuiTi] border-2 border-pink-200 bg-pink-50/50! focus:border-pink-300! focus:shadow-lg focus:shadow-pink-200/50! focus:outline-none"
+                  className="rounded-xl transition-all font-normal font-[AlibabaPuHuiTi] border-2 border-pink-200 bg-pink-50/50! focus:border-pink-300! focus:shadow-lg focus:shadow-pink-200/50 focus:outline-none"
                 />
               </InputGroup>
             </motion.div>
@@ -260,4 +260,6 @@ export default function Login() {
       </Box>
     </Box>
   );
-}
+};
+
+export default Login;
