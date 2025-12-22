@@ -3,7 +3,7 @@ import { APP_NAME } from "@/utils/app";
 import { Box, Text, Image } from "@chakra-ui/react";
 import { useDocumentTitle } from "@uidotdev/usehooks";
 
-export default function NotFound() {
+const NotFound = () => {
   useDocumentTitle(`${APP_NAME} WebUI`);
   const imageUrl = "https://t.alcy.cc/moez";
 
@@ -26,4 +26,5 @@ export default function NotFound() {
       </Box>
     </Box>
   );
-}
+};
+export default NotFound;

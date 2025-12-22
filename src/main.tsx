@@ -7,17 +7,21 @@ import "@/styles/tailwind.css";
 import "@/styles/font.scss";
 import "@/styles/global.scss";
 import React from "react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 scan({
   enabled: true,
 });
+const queryClient = new QueryClient();
 
 createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <BrowserRouter>
-      <Provider>
-        <App />
-      </Provider>
+      <QueryClientProvider client={queryClient}>
+        <Provider>
+          <App />
+        </Provider>
+      </QueryClientProvider>
     </BrowserRouter>
   </React.StrictMode>,
 );
