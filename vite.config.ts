@@ -5,6 +5,7 @@ import tailwindcss from "@tailwindcss/vite";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import viteCompression from "vite-plugin-compression";
+import { vitePluginVersionMark } from "vite-plugin-version-mark";
 
 const filePath = path.dirname(fileURLToPath(import.meta.url));
 
@@ -24,6 +25,9 @@ export default defineConfig({
       verbose: true,
       deleteOriginFile: false,
     }),
+    vitePluginVersionMark({
+      ifLog: false
+    })
   ],
   build: {
     target: ["chrome107"],
@@ -39,8 +43,10 @@ export default defineConfig({
               test: (moduleId) => {
                 return (
                   moduleId.includes("react") ||
+                  moduleId.includes("react-hook-form") ||
                   moduleId.includes("@tanstack/react-query") ||
-                  moduleId.includes("@uidotdev/usehooks")
+                  moduleId.includes("@uidotdev/usehooks") ||
+                  moduleId.includes("zustand")
                 );
               },
               priority: 1,

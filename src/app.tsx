@@ -12,6 +12,7 @@ const HomePage = lazy(() => import("@/pages/home"));
 const LoginPage = lazy(() => import("@/pages/login"));
 const DashboardPage = lazy(() => import("@/pages/dashboard"));
 const NotFoundPage = lazy(() => import("@/pages/404"));
+const LayoutPage = lazy(() => import("@/components/layout"));
 
 export default function APP() {
   return (
@@ -19,8 +20,12 @@ export default function APP() {
       <Routes>
         <Route path={BASE_ROUTE} element={<HomePage />} index={true} />
         <Route path={LOGIN_ROUTE} element={<LoginPage />} />
-        <Route path={DashBoard_ROUTE} element={<DashboardPage />} />
         <Route path={NOT_FOUND_ROUTE} element={<NotFoundPage />} />
+
+        <Route element={<LayoutPage />}>
+          <Route path={DashBoard_ROUTE} element={<DashboardPage />} />
+        </Route>
+
       </Routes>
     </Suspense>
   );
