@@ -71,6 +71,7 @@ export default defineConfig({
                   moduleId.includes("tailwindcss-animate") ||
                   moduleId.includes("lucide-react") ||
                   moduleId.includes("class-variance-authority") ||
+                  moduleId.includes("clsx") ||
                   moduleId.includes("gsap") ||
                   moduleId.includes("@gsap/") ||
                   moduleId.includes("@emotion/react")
