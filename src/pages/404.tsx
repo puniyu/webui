@@ -1,7 +1,7 @@
 import { ColorModeButton } from "@/components/ui/color-mode";
 import { APP_NAME } from "@/utils/app";
 import { Box, Text, Image } from "@chakra-ui/react";
-import { useDocumentTitle } from "@uidotdev/usehooks";
+import { useDocumentTitle } from "usehooks";
 
 const NotFound = () => {
   useDocumentTitle(`${APP_NAME} WebUI`);

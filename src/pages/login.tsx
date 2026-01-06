@@ -26,7 +26,7 @@ import SplitText from "@/components/SplitText";
 import { APP_NAME, DOCS_URL, REPO_URL } from "@/utils/app";
 import { FiBookOpen, FiGithub } from "react-icons/fi";
 import { camelCase } from "es-toolkit/string";
-import { useDocumentTitle } from "@uidotdev/usehooks";
+import { useDocumentTitle } from "usehooks";
 import { useQuery } from "@tanstack/react-query";
 import { UserInfo } from "@/types";
 
@@ -258,7 +258,7 @@ const Login = () => {
 
               {/* 一言 */}
               <Box
-                className="mt-4 min-h-[50px] flex items-center justify-center cursor-pointer"
+                className="mt-4 min-h-12.5 flex items-center justify-center cursor-pointer"
                 onClick={() => refetchYiyan()}
                 title="点击刷新"
               >

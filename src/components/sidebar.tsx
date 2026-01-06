@@ -3,8 +3,8 @@ import { FiHome, FiSettings } from "react-icons/fi";
 import { motion, AnimatePresence } from "motion/react";
 import { Link, useLocation } from "react-router-dom";
 import { DashBoard_ROUTE } from "@/utils/router";
-import { useMediaQuery } from "@uidotdev/usehooks";
 import { useSidebar } from "@/hooks/sidebar";
+import { useIsDesktop } from "@/hooks/media";
 import { ColorModeButton } from "@/components/ui/color-mode";
 
 const navItems = [
@@ -14,7 +14,7 @@ const navItems = [
 
 const SideBar = () => {
   const location = useLocation();
-  const isDeskTop = useMediaQuery("only screen and (min-width: 993px)");
+  const isDeskTop = useIsDesktop();
   const { isOpen, close } = useSidebar();
 
   if (isDeskTop) {

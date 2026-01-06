@@ -4,11 +4,11 @@ import NavBar from "./navbar";
 import Footer from "./footer";
 import SideBar from "./sidebar";
 import { Outlet } from "react-router-dom";
-import { useMediaQuery } from "@uidotdev/usehooks";
 import { useSidebar } from "@/hooks/sidebar";
+import { useIsDesktop } from "@/hooks/media";
 
 const Layout = () => {
-  const isDeskTop = useMediaQuery("only screen and (min-width: 993px)");
+  const isDeskTop = useIsDesktop();
   const setOpen = useSidebar((state) => state.setOpen);
 
   useEffect(() => {

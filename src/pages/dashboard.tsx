@@ -10,7 +10,7 @@ import {
   VStack,
   Spinner,
 } from "@chakra-ui/react";
-import { useDocumentTitle } from "@uidotdev/usehooks";
+import { useDocumentTitle } from "usehooks";
 
 // TODO: 从 API 获取核心版本
 export default function () {

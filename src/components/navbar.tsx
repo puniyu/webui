@@ -8,7 +8,7 @@ import {
   FiX,
 } from "react-icons/fi";
 import { motion, AnimatePresence } from "motion/react";
-import { useMediaQuery } from "@uidotdev/usehooks";
+import { useMediaQuery } from "usehooks";
 import { APP_NAME } from "@/utils/app";
 import logo from "@/assets/logo.webp";
 import { FaRegUserCircle } from "react-icons/fa";
