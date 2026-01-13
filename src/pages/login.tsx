@@ -71,7 +71,6 @@ const Login = () => {
     <Box className="w-full min-h-dvh bg-linear-to-br from-pink-50 via-rose-50 to-fuchsia-100 dark:from-gray-900 dark:via-black dark:to-gray-900 relative">
       <AbsoluteCenter className="px-4 md:px-0">
         <Box>
-          {/* 表单主体内容 */}
           <motion.div
             initial={{ opacity: 0, y: 30, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}

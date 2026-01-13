@@ -1,32 +1,32 @@
-import { useEffect } from "react";
 import { Box, Flex } from "@chakra-ui/react";
 import NavBar from "./navbar";
 import Footer from "./footer";
 import SideBar from "./sidebar";
 import { Outlet } from "react-router-dom";
-import { useSidebar } from "@/hooks/sidebar";
-import { useIsDesktop } from "@/hooks/media";
+import { SidebarProvider } from "@/contexts/sidebar";
+import { PageTitleProvider } from "@/contexts/pageTitle";
 
 const Layout = () => {
-  const isDeskTop = useIsDesktop();
-  const setOpen = useSidebar((state) => state.setOpen);
-
-  useEffect(() => {
-    setOpen(isDeskTop ?? false);
-  }, [isDeskTop, setOpen]);
   return (
-    <Box className="h-screen flex flex-col overflow-hidden">
-      <NavBar />
-      <Flex className="flex-1 pt-14 overflow-hidden">
-        <SideBar />
-        <Box className="flex-1 flex flex-col">
-          <Box className="flex-1">
-            <Outlet />
-          </Box>
-          <Footer />
-        </Box>
-      </Flex>
-    </Box>
+    <PageTitleProvider>
+      <SidebarProvider>
+        <Flex className="h-screen overflow-hidden bg-linear-to-br from-pink-50 via-rose-50 to-fuchsia-100">
+          <SideBar />
+          <Flex
+            flex="1"
+            direction="column"
+            className="backdrop-blur-md backdrop-saturate-150"
+            overflow="hidden"
+          >
+            <NavBar />
+            <Box flex="1" overflow="auto">
+              <Outlet />
+            </Box>
+            <Footer />
+          </Flex>
+        </Flex>
+      </SidebarProvider>
+    </PageTitleProvider>
   );
 };
 
