@@ -1,8 +1,8 @@
 import { useContext, useEffect } from "react";
-import { PageTitleContext } from "@/contexts/pageTitle";
+import { PageContext } from "@/contexts/page";
 
 export const usePageTitle = () => {
-  const context = useContext(PageTitleContext);
+  const context = useContext(PageContext);
   if (!context) {
     throw new Error("usePageTitle must be used within PageTitleProvider");
   }

@@ -11,7 +11,7 @@ import {
   Spinner,
 } from "@chakra-ui/react";
 import { useDocumentTitle } from "usehooks";
-import { useSetPageTitle } from "@/hooks/pageTitle";
+import { useSetPageTitle } from "@/hooks/page";
 
 // TODO: 从 API 获取核心版本
 export default function () {

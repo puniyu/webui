@@ -1,7 +1,7 @@
 import { Box, IconButton, Flex, Text } from "@chakra-ui/react";
 import { useSidebar } from "@/hooks/sidebar";
 import { HiMenu, HiX } from "react-icons/hi";
-import { usePageTitle } from "@/hooks/pageTitle";
+import { usePageTitle } from "@/hooks/page";
 
 const NavBar = () => {
   const { isOpen, toggle } = useSidebar();

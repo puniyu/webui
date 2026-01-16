@@ -4,11 +4,11 @@ import Footer from "./footer";
 import SideBar from "./sidebar";
 import { Outlet } from "react-router-dom";
 import { SidebarProvider } from "@/contexts/sidebar";
-import { PageTitleProvider } from "@/contexts/pageTitle";
+import { PageProvider } from "@/contexts/page";
 
 const Layout = () => {
   return (
-    <PageTitleProvider>
+    <PageProvider>
       <SidebarProvider>
         <Flex className="h-screen overflow-hidden bg-linear-to-br from-pink-50 via-rose-50 to-fuchsia-100">
           <SideBar />
@@ -26,7 +26,7 @@ const Layout = () => {
           </Flex>
         </Flex>
       </SidebarProvider>
-    </PageTitleProvider>
+    </PageProvider>
   );
 };
 
