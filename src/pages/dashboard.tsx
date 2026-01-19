@@ -10,12 +10,12 @@ import {
   VStack,
   Spinner,
 } from "@chakra-ui/react";
-import { useDocumentTitle } from "usehooks";
 import { useSetPageTitle } from "@/hooks/page";
+import { useTitle } from "ahooks";
 
 // TODO: 从 API 获取核心版本
 export default function () {
-  useDocumentTitle(`Dashboard - ${APP_NAME} WebUI`);
+  useTitle(`Dashboard - ${APP_NAME} WebUI`);
   useSetPageTitle("首页");
 
   // TODO: 后续从 API 获取核心版本

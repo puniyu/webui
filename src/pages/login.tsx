@@ -21,18 +21,18 @@ import { useState } from "react";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import axios from "axios";
 import logo from "@/assets/logo.webp";
-import { ColorModeButton } from "@/components/ui/color-mode";
-import SplitText from "@/components/SplitText";
+// import { ColorModeButton } from "@/components/ui/color-mode";
+// import SplitText from "@/components/SplitText";
 import { APP_NAME, DOCS_URL, REPO_URL } from "@/utils/app";
 import { FiBookOpen, FiGithub } from "react-icons/fi";
 import { camelCase } from "es-toolkit/string";
-import { useDocumentTitle } from "usehooks";
 import { useQuery } from "@tanstack/react-query";
 import { UserInfo } from "@/types";
+import { useTitle } from 'ahooks'
 
 // TODO: 登录功能实现
 const Login = () => {
-  useDocumentTitle(`Login - ${APP_NAME} WebUI`);
+  useTitle(`Login - ${APP_NAME} WebUI`);
   const [showPassword, setShowPassword] = useState(false);
 
   const {

@@ -1,4 +1,10 @@
-// 隐藏浏览器默认的密码可见性按钮
+@import "tailwindcss";
+@import "@heroui/styles";
+@import "./font.scss"; 
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* 隐藏浏览器默认的密码可见性按钮 */
 input[type="password"] {
   &::-ms-reveal,
   &::-ms-clear {
