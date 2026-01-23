@@ -1,31 +1,18 @@
-import { Box, Flex, Image, Text } from "@chakra-ui/react";
 import { motion } from "motion/react";
 import logo from "@/assets/logo.webp";
 
-export default function Loading() {
+export default function Loading() { 
   return (
-    <Flex
-      w={"full"}
-      h={"100vh"}
-      align={"center"}
-      justify={"center"}
-      overflow={"hidden"}
-      bgGradient={"linear(to-br, pink.50, white, purple.50)"}
-      _dark={{ bgGradient: "linear(to-br, gray.900, black, gray.900)" }}
-    >
-      <Flex className="relative z-10" direction={"column"} align={"center"}>
+    <div className="w-full h-screen flex items-center justify-center overflow-hidden bg-linear-to-br from-pink-50 to-white dark:from-gray-900 dark:to-black dark:via-gray-900">
+      <div className="relative z-10 flex flex-col items-center">
         {/* Logo 动画 */}
-        <Box>
+        <div>
           <motion.div
             animate={{ rotate: 360 }}
             transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
           >
-            <Box className="relative">
-              <Box
-                className="absolute -inset-3 blur-lg"
-                bg="linear-gradient(135deg, #ffa8c5, #ffb6c1, #ffc4d6)"
-                rounded={"full"}
-              >
+            <div className="relative">
+              <div className="absolute -inset-3 blur-lg bg-linear-to-br from-pink-400 via-pink-300 to-pink-200 rounded-full">
                 <motion.div
                   animate={{ opacity: [0.5, 0.8, 0.5], scale: [1, 1.1, 1] }}
                   transition={{
@@ -34,25 +21,22 @@ export default function Loading() {
                     ease: "easeInOut",
                   }}
                 />
-              </Box>
-              <Image
+              </div>
+              <img
                 src={logo}
-                className="size-40 relative z-10"
-                rounded="full"
+                className="size-40 relative z-10 rounded-full"
+                alt="Logo"
               />
-            </Box>
+            </div>
           </motion.div>
-        </Box>
+        </div>
 
         {/* 文字动画 */}
-        <Flex className="mt-3!">
+        <div className="mt-3! flex">
           {"Loading".split("").map((char, i) => (
-            <Box
+            <div
               key={i}
-              className="text-2xl font-medium"
-              bgImage="linear-gradient(135deg, #ff8fb3, #ffa8c5)"
-              bgClip="text"
-              color="transparent"
+              className="text-2xl font-medium bg-linear-to-br from-pink-400 via-pink-300 to-pink-200 bg-clip-text text-transparent"
             >
               <motion.div
                 animate={{ y: [0, -8, 0], opacity: [0.6, 1, 0.6] }}
@@ -63,15 +47,12 @@ export default function Loading() {
                   delay: i * 0.1,
                 }}
               >
-                <Text>{char}</Text>
+                <span>{char}</span>
               </motion.div>
-            </Box>
+            </div>
           ))}
-          <Box
-            className="text-2xl font-medium"
-            bgImage="linear-gradient(135deg, #ff8fb3, #ffa8c5)"
-            bgClip="text"
-            color="transparent"
+          <div
+            className="text-2xl font-medium bg-linear-to-br from-pink-400 via-pink-300 to-pink-200 bg-clip-text text-transparent"
           >
             <motion.div
               animate={{ opacity: [0, 1, 0] }}
@@ -81,43 +62,30 @@ export default function Loading() {
                 ease: "easeInOut",
               }}
             >
-              <Text>...</Text>
+              <span>...</span>
             </motion.div>
-          </Box>
-        </Flex>
+          </div>
+        </div>
 
         {/* 进度条 */}
-        <Box
-          className="mt-2.5 w-48 h-1.5 overflow-hidden"
-          bg={"gray.200"}
-          rounded={"full"}
-          _dark={{ bg: "gray.700" }}
-        >
-          <Box
-            h={"full"}
-            bg="linear-gradient(90deg, #ffa8c5, #ffb6c1, #ffc4d6)"
-            rounded={"full"}
-          >
-            <motion.div
-              animate={{ x: ["-100%", "100%"] }}
-              transition={{
-                duration: 1.5,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
-          </Box>
-        </Box>
+        <div className="mt-2.5 w-48 h-1.5 overflow-hidden bg-gray-200 rounded-full dark:bg-gray-700 relative">
+          <motion.div
+            className="absolute inset-0 bg-linear-to-r from-pink-400 via-pink-300 to-pink-200 rounded-full"
+            initial={{ left: "-100%" }}
+            animate={{ left: ["-100%", "0%", "100%"] }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut",
+              times: [0, 0.5, 1]
+            }}
+          />
+        </div>
 
-        <Text
-          className="text-xs"
-          mt={"4"}
-          color={"gray.400"}
-          _dark={{ color: "gray.500" }}
-        >
+        <div className="text-xs mt-4 text-gray-400 dark:text-gray-500">
           正在加载资源...
-        </Text>
-      </Flex>
-    </Flex>
+        </div>
+      </div>
+    </div>
   );
 }
