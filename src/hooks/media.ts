@@ -5,5 +5,5 @@ export const useIsMobile = () => {
 };
 
 export const useIsDesktop = () => {
-  return useMediaQuery("(min-width: 768px)");
+  return useMediaQuery("(min-width: 769px)");
 };
