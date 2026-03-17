@@ -1,60 +1,53 @@
 {
-  "name": "puniyu-web",
-  "version": "0.1.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite dev",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
-  "devDependencies": {
-    "@chakra-ui/cli": "^3.27.1",
-    "@prettier/plugin-oxc": "^0.1.0",
-    "@tailwindcss/cli": "^4.1.14",
-    "@types/node": "^25.0.0",
-    "@types/react": "^19.2.2",
-    "@types/react-dom": "^19.2.2",
-    "@vitejs/plugin-react": "^5.0.4",
-    "oxlint": "^1.23.0",
-    "prettier": "^3.6.2",
-    "react-scan": "^0.4.3",
-    "sass": "^1.93.2",
-    "tailwindcss": "^4.1.14",
-    "vite": "npm:rolldown-vite@latest",
-    "vite-plugin-compression": "^0.5.1",
-    "vite-plugin-version-mark": "^0.2.2",
-    "vite-tsconfig-paths": "^6.0.0"
-  },
-  "dependencies": {
-    "@chakra-ui/react": "^3.27.1",
-    "@emotion/react": "^11.14.0",
-    "@gsap/react": "^2.1.2",
-    "@heroui/react": "3.0.0-beta.3",
-    "@heroui/styles": "3.0.0-beta.3",
-    "@tailwindcss/vite": "^4.1.14",
-    "@tanstack/react-query": "^5.90.12",
-    "ahooks": "^3.9.6",
-    "axios": "^1.12.2",
-    "clsx": "^2.1.1",
-    "es-toolkit": "^1.42.0",
-    "gsap": "^3.13.0",
-    "motion": "^12.23.24",
-    "next-themes": "^0.4.6",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
-    "react-hook-form": "^7.69.0",
-    "react-icons": "^5.5.0",
-    "react-refresh": "^0.18.0",
-    "react-router-dom": "^7.9.4",
-    "usehooks": "npm:usehooks-ts@^3.1.1",
-    "zustand": "^5.0.9"
-  },
-  "packageManager": "pnpm@10.25.0",
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "@parcel/watcher",
-      "@tailwindcss/oxide",
-      "esbuild"
-    ]
-  }
+	"name": "puniyu-web",
+	"version": "0.1.0",
+	"type": "module",
+	"scripts": {
+		"build": "vite build",
+		"dev": "vite dev",
+		"preview": "vite preview"
+	},
+	"dependencies": {
+		"@heroui/react": "3.0.0-beta.3",
+		"@heroui/styles": "3.0.0-beta.3",
+		"@tailwindcss/vite": "^4.1.14",
+		"@tanstack/react-query": "^5.90.12",
+		"axios": "^1.12.2",
+		"clsx": "^2.1.1",
+		"es-toolkit": "^1.42.0",
+		"motion": "^12.23.24",
+		"next-themes": "^0.4.6",
+		"react": "^19.2.0",
+		"react-dom": "^19.2.0",
+		"react-hook-form": "^7.69.0",
+		"react-icons": "^5.5.0",
+		"react-refresh": "^0.18.0",
+		"react-router-dom": "^7.9.4",
+		"usehooks": "npm:@reactuses/core@^6.1.12",
+		"zustand": "^5.0.9"
+	},
+	"devDependencies": {
+		"@prettier/plugin-oxc": "^0.1.0",
+		"@types/node": "^25.0.0",
+		"@types/react": "^19.2.2",
+		"@types/react-dom": "^19.2.2",
+		"@vitejs/plugin-react": "^5.0.4",
+		"oxfmt": "^0.41.0",
+		"oxlint": "^1.23.0",
+		"prettier": "^3.6.2",
+		"react-scan": "^0.4.3",
+		"sass": "^1.93.2",
+		"tailwindcss": "^4.1.14",
+		"vite": "^8.0.0",
+		"vite-plugin-compression": "^0.5.1",
+		"vite-plugin-version-mark": "^0.2.2"
+	},
+	"packageManager": "pnpm@10.25.0",
+	"pnpm": {
+		"onlyBuiltDependencies": [
+			"@parcel/watcher",
+			"@tailwindcss/oxide",
+			"esbuild"
+		]
+	}
 }
