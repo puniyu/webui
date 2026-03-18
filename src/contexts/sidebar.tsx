@@ -1,30 +1,18 @@
-import { createContext, ReactNode, useEffect, useState } from 'react'
+import React, { createContext } from 'react'
 
-import { isDesktop } from '@/utils/media'
+import { SidebarStore, ContextType } from '@/stores/sidebar'
 
-export const SidebarProvider = ({ children }: { children: ReactNode }) => {
-	const [isOpen, setIsOpen] = useState(true)
-	const isDeskTop = isDesktop()
+export const Context = createContext<ContextType | null>(null)
 
-	useEffect(() => {
-		setIsOpen(isDeskTop ?? false)
-	}, [isDeskTop])
-
-	const toggle = () => setIsOpen((prev) => !prev)
-	const close = () => setIsOpen(false)
+export const SidebarProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+	const isOpen = SidebarStore((state) => state.isOpen)
+	const openSidebar = SidebarStore((state) => state.openSidebar)
+	const closeSidebar = SidebarStore((state) => state.closeSidebar)
+	const toggleSidebar = SidebarStore((state) => state.toggleSidebar)
 
 	return (
-		<SidebarContext.Provider value={{ isOpen, toggle, close, setOpen: setIsOpen }}>
+		<Context.Provider value={{ isOpen, openSidebar, closeSidebar, toggleSidebar }}>
 			{children}
-		</SidebarContext.Provider>
+		</Context.Provider>
 	)
 }
-
-interface SidebarContextType {
-	isOpen: boolean
-	toggle: () => void
-	close: () => void
-	setOpen: (open: boolean) => void
-}
-
-export const SidebarContext = createContext<SidebarContextType | undefined>(undefined)
