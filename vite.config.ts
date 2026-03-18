@@ -28,6 +28,9 @@ export default defineConfig({
 			ifLog: false,
 		}),
 	],
+	resolve: {
+		tsconfigPaths: true,
+	},
 	build: {
 		target: ['chrome107'],
 		outDir: path.join(filePath, 'dist'),

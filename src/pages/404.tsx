@@ -1,4 +1,4 @@
-import { useTitle } from 'ahooks'
+import { useTitle } from 'usehooks'
 
 import { APP_NAME } from '@/utils/app'
 

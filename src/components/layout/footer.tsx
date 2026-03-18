@@ -1,6 +1,6 @@
 import { APP_DESC, APP_NAME } from '@/utils/app'
 
-export const Footer = () => {
+const Footer = () => {
 	return (
 		<>
 			<div className='text-md flex flex-col items-center gap-1 px-4 py-6 font-[AlibabaPuHuiTi]'>

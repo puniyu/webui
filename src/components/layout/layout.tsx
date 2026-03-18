@@ -1,9 +1,13 @@
-import { Footer } from './footer'
+import LayoutProvider from '@/contexts/layout'
+
+import Footer from './footer'
 
 export const Layout = () => {
 	return (
 		<>
-			<Footer />
+			<LayoutProvider>
+				<Footer />
+			</LayoutProvider>
 		</>
 	)
 }

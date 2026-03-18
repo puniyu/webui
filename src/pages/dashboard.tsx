@@ -1,11 +1,9 @@
-import { useTitle } from 'ahooks'
+import { useTitle } from 'usehooks'
 
-import { useSetPageTitle } from '@/hooks/page'
 import { APP_NAME } from '@/utils/app'
 
 const Dashboard = () => {
 	useTitle(`Dashboard - ${APP_NAME} WebUI`)
-	useSetPageTitle('首页')
 
 	return (
 		<>

@@ -4,11 +4,9 @@ import { SidebarStore, ContextType } from '@/stores/sidebar'
 
 export const Context = createContext<ContextType | null>(null)
 
-export const SidebarProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-	const isOpen = SidebarStore((state) => state.isOpen)
-	const openSidebar = SidebarStore((state) => state.openSidebar)
-	const closeSidebar = SidebarStore((state) => state.closeSidebar)
-	const toggleSidebar = SidebarStore((state) => state.toggleSidebar)
+const SidebarProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+	const store = SidebarStore((state) => state)
+	const { isOpen, openSidebar, closeSidebar, toggleSidebar } = store
 
 	return (
 		<Context.Provider value={{ isOpen, openSidebar, closeSidebar, toggleSidebar }}>
@@ -16,3 +14,4 @@ export const SidebarProvider: React.FC<{ children: React.ReactNode }> = ({ child
 		</Context.Provider>
 	)
 }
+export default SidebarProvider

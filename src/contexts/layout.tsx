@@ -1,11 +1,11 @@
 import React, { createContext } from "react";
 
-import { SidebarProvider } from "./sidebar";
-import { ThemeProvider } from "./theme";
+import SidebarProvider from "./sidebar";
+import ThemeProvider from "./theme";
 
 export const Context = createContext(null);
 
-export const LayoutProvider: React.FC<{ children: React.ReactNode }> = ({
+const LayoutProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   return (
@@ -18,3 +18,5 @@ export const LayoutProvider: React.FC<{ children: React.ReactNode }> = ({
     </>
   );
 };
+
+export default LayoutProvider;
