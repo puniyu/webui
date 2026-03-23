@@ -46,9 +46,9 @@ export default defineConfig({
 								return (
 									moduleId.includes('react') ||
 									moduleId.includes('react-hook-form') ||
-									moduleId.includes('@tanstack/react-query') ||
-									moduleId.includes('@uidotdev/usehooks') ||
-									moduleId.includes('zustand')
+									moduleId.includes('usehooks') ||
+									moduleId.includes('zustand') || 
+									moduleId.includes('jotai')
 								)
 							},
 							priority: 1,
@@ -57,8 +57,7 @@ export default defineConfig({
 							name: 'vendor-ui',
 							test: (moduleId) => {
 								return (
-									moduleId.includes('@chakra-ui/') ||
-									moduleId.includes('next-themes') ||
+									moduleId.includes('@heroui') ||
 									moduleId.includes('motion')
 								)
 							},
@@ -69,14 +68,7 @@ export default defineConfig({
 							test: (moduleId) => {
 								return (
 									moduleId.includes('tailwind') ||
-									moduleId.includes('tw-animate-css') ||
-									moduleId.includes('tailwindcss-animate') ||
-									moduleId.includes('lucide-react') ||
-									moduleId.includes('class-variance-authority') ||
-									moduleId.includes('clsx') ||
-									moduleId.includes('gsap') ||
-									moduleId.includes('@gsap/') ||
-									moduleId.includes('@emotion/react')
+									moduleId.includes('normalize.css')
 								)
 							},
 							priority: 3,
@@ -105,7 +97,7 @@ export default defineConfig({
 				chunkFileNames: 'assets/js/[name]-[hash].js',
 				entryFileNames: 'assets/js/entry-[hash].js',
 				assetFileNames: (assetInfo) => {
-					const info = assetInfo.name || ''
+					const info = assetInfo.names[0] || ''
 					const extType = info.split('.').pop() || 'misc'
 					if (/\.(png|jpe?g|gif|svg|webp|avif)$/i.test(info)) {
 						return 'assets/images/[name]-[hash][extname]'
