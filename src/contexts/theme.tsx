@@ -5,7 +5,7 @@ import {
   ThemeMode,
 } from "@/stores/theme";
 
-const Context = createContext<ContextType | null>(null);
+export const Context = createContext<ContextType | null>(null);
 
 const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
