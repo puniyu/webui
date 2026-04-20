@@ -11,7 +11,7 @@ const filePath = path.dirname(fileURLToPath(import.meta.url))
 
 export default defineConfig({
 	server: {
-		port: 33720,
+		port: 33730,
 		host: '0.0.0.0',
 	},
 	plugins: [

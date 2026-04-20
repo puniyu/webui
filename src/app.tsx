@@ -15,9 +15,9 @@ const APP = () => {
 		<Suspense fallback={<LoadingPage />}>
 			<Routes>
 				<Route path={BASE_ROUTE} element={<HomePage />} index={true} />
-				{/* <Route path={LOGIN_ROUTE} element={<LoginPage />} />
-        <Route path={NOT_FOUND_ROUTE} element={<NotFoundPage />} />
-
+				<Route path={LOGIN_ROUTE} element={<LoginPage />} />
+				<Route path={NOT_FOUND_ROUTE} element={<NotFoundPage />} />
+				{/*
         <Route element={<LayoutPage />}>
           <Route path={DashBoard_ROUTE} element={<DashboardPage />} />
         </Route> */}
