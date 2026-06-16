@@ -1,27 +1,21 @@
-import { Provider } from "@/components/ui/provider";
-import { scan } from "react-scan";
-import { createRoot } from "react-dom/client";
-import App from "@/app";
-import { BrowserRouter } from "react-router-dom";
-import "@/styles/tailwind.css";
-import "@/styles/font.scss";
-import "@/styles/global.scss";
-import React from "react";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import React from 'react'
+import { createRoot } from 'react-dom/client'
+import { BrowserRouter } from 'react-router-dom'
+
+import 'normalize.css'
+import '@/styles/global.css'
+import { scan } from 'react-scan'
+
+import App from '@/app'
 
 scan({
-  enabled: true,
-});
-const queryClient = new QueryClient();
+	enabled: true,
+})
 
-createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <QueryClientProvider client={queryClient}>
-        <Provider>
-          <App />
-        </Provider>
-      </QueryClientProvider>
-    </BrowserRouter>
-  </React.StrictMode>,
-);
+createRoot(document.getElementById('root')!).render(
+	<React.StrictMode>
+		<BrowserRouter>
+				<App />
+		</BrowserRouter>
+	</React.StrictMode>,
+)

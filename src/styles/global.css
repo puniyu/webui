@@ -1,0 +1,35 @@
+@import 'tailwindcss';
+@import '@heroui/styles';
+@import './font.scss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-sakura-50: #fff0f5;
+  --color-sakura-100: #ffe0ec;
+  --color-sakura-200: #ffc2d9;
+  --color-sakura-300: #ff9dbf;
+  --color-sakura-400: #ff6fa0;
+  --color-sakura-500: #ff4d87;
+  --color-sakura-600: #f02070;
+  --color-sakura-700: #c4155a;
+  --color-sakura-800: #9e1249;
+  --color-sakura-900: #7a0f3a;
+  --color-petal-light: #fff5f8;
+  --color-petal-mid: #fde8f0;
+  --color-petal-dark: #f9c6d8;
+}
+
+/* 隐藏浏览器默认的密码可见性按钮 */
+input[type='password'] {
+	&::-ms-reveal,
+	&::-ms-clear {
+		display: none;
+	}
+	&::-webkit-credentials-auto-fill-button {
+		visibility: hidden;
+	}
+	&::-webkit-password-toggle-button {
+		display: none;
+	}
+}

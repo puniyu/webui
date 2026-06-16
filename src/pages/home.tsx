@@ -1,13 +1,16 @@
-import { DashBoard_ROUTE } from '@/utils/router';
-import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-export default function Home() {
-  const navigate = useNavigate();
+import { DashBoard_ROUTE } from '@/utils/router'
 
-  useEffect(() => {
-    navigate(DashBoard_ROUTE, { replace: true });
-  }, [navigate]);
+const Home = () => {
+	const navigate = useNavigate()
 
-  return null;
+	useEffect(() => {
+		navigate(DashBoard_ROUTE, { replace: true })
+	}, [navigate])
+
+	return null
 }
+
+export default Home
